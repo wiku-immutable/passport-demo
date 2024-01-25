@@ -4,23 +4,10 @@ import { get } from "svelte/store";
 export async function login(): Promise<void> {
     buttonState.update(() => "Connecting...");
     const passport = get(passportStore);
-    let provider = await passport.connectImxSilent();
-    console.log("provider after silent connect", provider)
-    if (!provider) {
-        try {
-            provider = await passport.connectImx();
-            console.log('provider after popup connect', provider);
-        } catch (err:any) {
-            // Error handling for user closing the popup
-            if (err.message === 'AUTHENTICATION_ERROR: Popup closed by user') {
-                buttonState.update(() => 'Connect');
-                return;
-            } else {
-                console.log(err);
-                throw err; // re-throw error to handle it in the outer catch block
-            }
-        }
-    }
+
+    let provider = await passport.connectImx();
+    console.log('provider after popup connect', provider);
+
     providerStore.set(provider);
     buttonState.update(() => "Connected");
 }
