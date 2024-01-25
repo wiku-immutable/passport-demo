@@ -36,7 +36,7 @@
 	"type": "module",
 	"dependencies": {
 		"@imtbl/core-sdk": "^2.0.0",
-		"@imtbl/sdk": "^0.13",
+		"@imtbl/sdk": "^0.44.1",
 		"@magic-ext/oidc": "^1.0.1",
 		"@sveltejs/adapter-vercel": "^3.0.3",
 		"flowbite-svelte": "^0.37.4"
